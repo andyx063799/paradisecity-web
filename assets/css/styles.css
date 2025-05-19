@@ -1,0 +1,315 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+    scroll-behavior: smooth;
+}
+
+body {
+    cursor: pointer;
+}
+
+.scroll-down {
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    transform: translateX(-50%);
+    font-size: 2.5vw;
+    color: #fff;
+    opacity: 0.7;
+    text-decoration: none;
+    z-index: 5;
+    animation: bounce 1.5s infinite;
+    transition: opacity 0.3s;
+}
+
+.scroll-down:hover {
+    opacity: 1;
+}
+
+.scroll-up {
+    position: absolute;
+    left: 50%;
+    top: 4%;
+    transform: translateX(-50%);
+    font-size: 2.5vw;
+    color: #fff;
+    opacity: 0.7;
+    text-decoration: none;
+    z-index: 5;
+    animation: bounceUp 1.5s infinite;
+    transition: opacity 0.3s;
+}
+
+.scroll-up:hover {
+    opacity: 1;
+}
+
+/* Aca el about xd */
+.about-section {
+    position: relative;
+    min-height: 100vh;
+    background: #0a001a;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 12vh 0 0 8vw;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../images/about-bg.jpg') center center/cover no-repeat;
+    filter: blur(6px) brightness(0.2);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.about-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    color: #fff;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: aboutFadeIn 1.2s 0.5s forwards;
+    margin-left: 0;
+}
+
+.about-content h2 {
+    font-size: 2.5vw;
+    margin-bottom: 1em;
+    color: #69089e;
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+}
+
+.about-content p {
+    font-size: 1.3vw;
+    line-height: 1.6;
+    color: #eee;
+    text-align: left;
+    font-family: 'Montserrat', Arial, sans-serif;
+
+}
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(1.05);
+    -webkit-user-drag: none;
+    user-select: none;
+    animation: fadeIn 2s ease-in forwards, unblur 2s ease-in forwards, zoomIn 2s ease-in forwards;
+}
+
+.root {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.root:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.7) 100%);
+    opacity: 1;
+    transition: opacity 2s ease-in;
+    z-index: 2;
+    animation: vignetteFade 2s ease-in forwards;
+}
+
+.neon-title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+    font-size: unset;
+    line-height: 1.1;
+    color : #fff;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 3;
+    letter-spacing: 0.15em;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 16px rgb(56, 7, 121),
+        0 0 32px rgb(128, 12, 163),
+        0 0 64px rgb(153, 0, 255);
+    opacity: 0;
+    filter: blur(4px);
+    animation: neonFadeIn 2s cubic-bezier(.77,0,.18,1) forwards, neonGlow 2s 2s infinite alternate;
+}
+
+.neon-line {
+    display: block;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 16px rgb(119, 0, 255),
+        0 0 32px rgb(132, 0, 255),
+        0 0 64px rgb(140, 0, 255);
+    font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    filter: blur(4px);
+    animation: neonFadeIn 2s cubic-bezier(.77,0,.18,1) forwards, neonGlow 2s 2s infinite alternate;
+}
+
+.neon-top {
+    font-size: 3vw;
+    margin-bottom: 0.2em;
+    animation-delay: 0.4s, 2.2s;
+}
+
+.neon-bottom {
+    font-size: 4vw;
+    animation-delay: 0.5s, 2.5s;
+}
+
+.coming-soon {
+    position: absolute;
+    left: 50%;
+    bottom: 12%;
+    transform: translateX(-50%);
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2vw;
+    color: #fff;
+    letter-spacing: 0.2em;
+    opacity: 0;
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    z-index: 4;
+    filter: blur(8px);
+    animation: comingSoonFadeIn 2.8s 1.2s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+.music-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background: linear-gradient(135deg, #111 60%, #333 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+.music-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+    background: linear-gradient(135deg, #222 40%, #444 100%);
+}
+
+.music-btn .note {
+    font-size: 1.4em;
+    animation: floatNote 1.2s infinite alternate ease-in-out;
+    display: inline-block;
+    filter: drop-shadow(0 0 6px #fff2);
+    transition: color 0.3s, filter 0.3s;
+}
+.music-btn .note.playing {
+    color: #ff00cc;
+    filter: drop-shadow(0 0 12px #ff00cc88);
+}
+
+@keyframes floatNote {
+    0% { transform: translateY(0) rotate(-10deg);}
+    100% { transform: translateY(-8px) rotate(10deg);}
+}
+
+@keyframes comingSoonFadeIn {
+    to {
+        opacity: 0.85;
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes neonFadeIn {
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes neonGlow {
+    from {
+        text-shadow:
+            0 0 8px #fff,
+            0 0 16px rgb(119, 0, 255),
+            0 0 32px rgb(132, 0, 255),
+            0 0 64px rgb(140, 0, 255);
+    }
+    to {
+        text-shadow:
+            0 0 16px #fff,
+            0 0 32px rgb(212, 0, 255),
+            0 0 64px rgb(129, 12, 224),
+            0 0 128px rgb(98, 0, 255);
+    }
+}
+
+@keyframes unblur {
+    to {
+        filter: blur(0);
+    }
+}
+
+@keyframes zoomIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes vignetteFade {
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes aboutFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(12px); }
+}
+
+@keyframes bounceUp {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-12px); }
+}
